@@ -4,6 +4,7 @@
 <html lang="en">
 
 <head>
+    <title>{% block title %}Home{% endblock %}</title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
@@ -34,7 +35,7 @@
 </head>
 
 <body>
-{% block content %}
+
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -60,19 +61,19 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="{% url 'school:team' %}" class="dropdown-item">Our Team</a>
+                        <a href="{% url 'school:testimonial' %}" class="dropdown-item">Testimonial</a>
                         <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="{% url 'school:contact' %}" class="nav-item nav-link">Contact</a>
             </div>
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
 
-
+{% block header %}
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
         <div class="owl-carousel header-carousel position-relative">
@@ -111,7 +112,7 @@
         </div>
     </div>
     <!-- Carousel End -->
-
+{% endblock %}
 
     <!-- Service Start -->
     <div class="container-xxl py-5">
@@ -200,7 +201,7 @@
     </div>
     <!-- About End -->
 
-
+{% block content %}
     <!-- Categories Start -->
     <div class="container-xxl py-5 category">
         <div class="container">
@@ -351,7 +352,7 @@
         </div>
     </div>
     <!-- Courses End -->
-
+{% endblock %}
 
     <!-- Team Start -->
     <div class="container-xxl py-5">
@@ -438,7 +439,7 @@
     </div>
     <!-- Team End -->
 
-
+{% block content2 %}
     <!-- Testimonial Start -->
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
@@ -483,8 +484,9 @@
         </div>
     </div>
     <!-- Testimonial End -->
+{% endblock %}
 
-
+{% block footer %}
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
