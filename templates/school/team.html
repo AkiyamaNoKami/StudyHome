@@ -24,6 +24,8 @@
     </div>
     <!-- Header End -->
 {% endblock %}
+{% block nav_home %}<a href="{% url 'school:school_home' %}" class="nav-item nav-link">Home</a>{% endblock %}
+{% block nav_pages %}<a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>{% endblock %}
 {% block service %}{% endblock %}
 {% block about %}{% endblock %}
 {% block categories %}{% endblock %}
