@@ -27,6 +27,8 @@
     </div>
     <!-- Header End -->
 {% endblock %}
+{% block nav_home %}<a href="{% url 'school:school_home' %}" class="nav-item nav-link">Home</a>{% endblock %}
+{% block nav_about %}<a href="{% url 'school:about' %}" class="nav-item nav-link active">About</a>{% endblock %}
 {% block categories %}{% endblock %}
 {% block courses %}{% endblock %}
 {% block testimonial %}{% endblock %}
