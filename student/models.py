@@ -1,6 +1,7 @@
 from django.db import models
+from course.models import Course, Subject
 
-class Teacher(models.Model):
+class Student(models.Model):
 
     GENDER_CHOICES = [
         ('М', 'Мужской'),
@@ -15,7 +16,7 @@ class Teacher(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     parents_phone = models.CharField(max_length=100)
     parents_email = models.EmailField(max_length=100, blank=False)
-    subject =
+    course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True)
     phone = models.CharField(max_length=20)
     email = models.EmailField(max_length=100, blank=False)
     description = models.TextField()

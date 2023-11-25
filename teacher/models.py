@@ -1,12 +1,6 @@
 from django.db import models
+from course.models import Subject
 
-
-class Subject(models.Model):
-    subject_id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.title
 class Teacher(models.Model):
 
     GENDER_CHOICES = [
