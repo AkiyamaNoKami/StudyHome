@@ -20,6 +20,9 @@ class CourseType(models.Model):
     def __str__(self):
         return self.type
 
+    class Meta:
+        ordering = ['type']
+
 
 class Course(models.Model):
     course_id = models.AutoField(primary_key=True)
