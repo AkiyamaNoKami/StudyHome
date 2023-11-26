@@ -10,6 +10,9 @@ class Subject(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['title']
+
 
 class CourseType(models.Model):
     type = models.CharField(max_length=50)
@@ -28,6 +31,12 @@ class Course(models.Model):
     description = models.TextField()
     students = models.ManyToManyField('student.Student', blank=True, related_name='courses_students')
 
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['title']
+
 
 class Lesson(models.Model):
     lesson_id = models.AutoField(primary_key=True)
@@ -37,11 +46,23 @@ class Lesson(models.Model):
     date = models.DateTimeField(editable=True)
     duration = models.IntegerField()
 
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['title']
+
 class Mark(models.Model):
     mark_id = models.AutoField(primary_key=True)
     score = models.IntegerField()
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.score
+
+    class Meta:
+        ordering = ['score']
 
 
 
