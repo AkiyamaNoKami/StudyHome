@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>{% block title %}Home{% endblock %}</title>
+    <title>{% block title %}Главная{% endblock %}</title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
@@ -41,7 +41,7 @@
 <div id="spinner"
      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
     <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only">Загрузка...</span>
     </div>
 </div>
 <!-- Spinner End -->
@@ -57,20 +57,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            {% block nav_home %}<a href="{% url 'school:school_home' %}" class="nav-item nav-link active">Home</a>{% endblock %}
-            {% block nav_about %}<a href="{% url 'school:about' %}" class="nav-item nav-link">About</a>{% endblock %}
-            {% block nav_course %}<a href="{% url 'school:courses' %}" class="nav-item nav-link">Courses</a>{% endblock %}
+            {% block nav_home %}<a href="{% url 'school:school_home' %}" class="nav-item nav-link active">Главная</a>{% endblock %}
+            {% block nav_about %}<a href="{% url 'school:about' %}" class="nav-item nav-link">О нас</a>{% endblock %}
+            {% block nav_course %}<a href="{% url 'school:courses' %}" class="nav-item nav-link">Курсы</a>{% endblock %}
             <div class="nav-item dropdown">
-                {% block nav_pages %}<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>{% endblock %}
+                {% block nav_pages %}<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">О компании</a>{% endblock %}
                 <div class="dropdown-menu fade-down m-0">
-                    <a href="{% url 'school:team' %}" class="dropdown-item">Our Team</a>
-                    <a href="{% url 'school:testimonial' %}" class="dropdown-item">Testimonial</a>
+                    <a href="{% url 'school:team' %}" class="dropdown-item">Наша команда</a>
+                    <a href="{% url 'school:testimonial' %}" class="dropdown-item">Отзывы</a>
                     <a href="404.html" class="dropdown-item">404 Page</a>
                 </div>
             </div>
-            {% block nav_contact %}<a href="{% url 'school:contact' %}" class="nav-item nav-link">Contact</a>{% endblock %}
+            {% block nav_contact %}<a href="{% url 'school:contact' %}" class="nav-item nav-link">Контакты</a>{% endblock %}
         </div>
-        <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+        <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Присоединиться<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
 </nav>
 <!-- Navbar End -->
@@ -86,16 +86,12 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-sm-10 col-lg-8">
-                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Best Online
-                                    Courses</h5>
-                                <h1 class="display-3 text-white animated slideInDown">The Best Online Learning
-                                    Platform</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed
-                                    stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus
-                                    eirmod elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
-                                    More</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Лучшие онлайн курсы</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Лучшая онлайн-платформа для обучения из дома</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">С нами вам не придется искать новых педагогов,
+                                    ребенок будет расти и учиться вместе с нами, а мы окажем ему всю возможную поддержку на всех этапах!</p>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Подробнее</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Присоединиться</a>
                             </div>
                         </div>
                     </div>
@@ -108,16 +104,12 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-sm-10 col-lg-8">
-                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Best Online
-                                    Courses</h5>
-                                <h1 class="display-3 text-white animated slideInDown">Get Educated Online From Your
-                                    Home</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed
-                                    stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus
-                                    eirmod elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
-                                    More</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Лучшие онлайн курсы</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Получите онлайн образование из дома</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Наши учебные программы составлены командой профессионалов
+                                с многолетним опытом. Ваш ребенок получит только самое лучшее и качественное образование!</p>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Подробнее</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Присоединиться</a>
                             </div>
                         </div>
                     </div>
@@ -136,8 +128,8 @@
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">Skilled Instructors</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <h5 class="mb-3">Высококвалифицированные преподаватели</h5>
+                            <p>Репетиторы проходят строгий отбор, а после зачисления в штат — повышение квалификации</p>
                         </div>
                     </div>
                 </div>
@@ -145,8 +137,8 @@
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                            <h5 class="mb-3">Online Classes</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <h5 class="mb-3">Находим подход к любому ученику</h5>
+                            <p>Подбираем индивидуальную программу занятий — с учетом уровня знаний ребенка и цели обучения</p>
                         </div>
                     </div>
                 </div>
@@ -154,8 +146,8 @@
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-home text-primary mb-4"></i>
-                            <h5 class="mb-3">Home Projects</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <h5 class="mb-3">Бережем свободное время</h5>
+                            <p>Ребенку не понадобится ездить к репетитору: все занятия проходят онлайн 8:00–22:00 мск</p>
                         </div>
                     </div>
                 </div>
@@ -163,8 +155,8 @@
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
-                            <h5 class="mb-3">Book Library</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <h5 class="mb-3">Экономим ваши деньги</h5>
+                            <p>Вам не нужно покупать учебники и тетради: все необходимое есть в личном кабинете ученика</p>
                         </div>
                     </div>
                 </div>
@@ -185,36 +177,34 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                    <h1 class="mb-4">Welcome to eLEARNING</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat
-                        amet</p>
+                    <h6 class="section-title bg-white text-start text-primary pe-3">О нас</h6>
+                    <h1 class="mb-4">Приветствуем в HomeStudy</h1>
+                    <p class="mb-4">Помогаем школьникам получать знания онлайн из любой точки мира — без лишних затрат и в комфортной обстановке</p>
+                    <p class="mb-4">Мы онлайн-платформа, на которой вы можете найти репетитора для своего ребенка.
+                        Проводим интерактивные онлайн-занятия по школьным предметам для учеников и бесплатные вебинары для их родителей</p>
                     <div class="row gy-2 gx-4 mb-4">
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Высококвалифицированные преподаватели</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Онлайн уроки</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Профессионально составленные курсы
                             </p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Индивидуальный подход</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Домашние задания</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Прогресс ученика
                             </p>
                         </div>
                     </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Подробнее</a>
                 </div>
             </div>
         </div>
@@ -226,8 +216,8 @@
     <div class="container-xxl py-5 category">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Categories</h6>
-                <h1 class="mb-5">Courses Categories</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">Категории</h6>
+                <h1 class="mb-5">Категории курсов</h1>
             </div>
             <div class="row g-3">
                 <div class="col-lg-7 col-md-6">
@@ -546,18 +536,18 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
+                    <h4 class="text-white mb-3">Информация</h4>
+                    <a class="btn btn-link" href="">О нас</a>
+                    <a class="btn btn-link" href="">Контакты</a>
+                    <a class="btn btn-link" href="">Документы</a>
+                    <a class="btn btn-link" href="">Политика обработки персональных данных</a>
+                    <a class="btn btn-link" href="">Вопросы и помощь</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <h4 class="text-white mb-3">Контакты</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>г. Санкт-Петербург, ул. Рубинштейна д.5, 3-й этаж</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+912 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>homestudy@gmail.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -566,7 +556,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Gallery</h4>
+                    <h4 class="text-white mb-3">Галерея</h4>
                     <div class="row g-2 pt-2">
                         <div class="col-4">
                             <img class="img-fluid bg-light p-1" src="{% static 'img/course-1.jpg' %}" alt="">
@@ -589,8 +579,8 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <h4 class="text-white mb-3">Рассылка</h4>
+                    <p>Подпишитесь на нашу рассылку, чтобы быть в курсе всех последних новостей</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
                         <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
                         <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
@@ -612,10 +602,10 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
-                            <a href="">Home</a>
+                            <a href="">Главная</a>
                             <a href="">Cookies</a>
-                            <a href="">Help</a>
-                            <a href="">FQAs</a>
+                            <a href="">Помощь</a>
+                            <a href="">Частозадаваемые вопросы</a>
                         </div>
                     </div>
                 </div>
