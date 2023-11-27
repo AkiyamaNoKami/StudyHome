@@ -32,7 +32,7 @@ class Course(models.Model):
     duration = models.IntegerField()
     cost = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
-    students = models.ManyToManyField('student.Student', blank=True, related_name='courses_students')
+    students = models.ManyToManyField('student.Student', blank=True, related_name='courses_students', through='student.StudentCourse')
 
     def __str__(self):
         return self.title
