@@ -25,7 +25,6 @@ class CourseType(models.Model):
 
 
 class Course(models.Model):
-    course_id = models.AutoField(primary_key=True)
     type = models.ForeignKey(CourseType, on_delete=models.SET_NULL, null=True, blank=True)
     subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=50)
@@ -33,6 +32,7 @@ class Course(models.Model):
     cost = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
     students = models.ManyToManyField('student.Student', blank=True, related_name='courses_students', through='student.StudentCourse')
+    teacher = models.ManyToManyField('teacher.Teacher', blank=True, related_name='course_teachers', through='teacher.TeacherCourse')
 
     def __str__(self):
         return self.title
@@ -56,13 +56,12 @@ class Lesson(models.Model):
         ordering = ['title']
 
 class Mark(models.Model):
-    mark_id = models.AutoField(primary_key=True)
     score = models.IntegerField()
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.score
+        return str(self.score)
 
     class Meta:
         ordering = ['score']
