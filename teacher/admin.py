@@ -20,8 +20,7 @@ class TeacherAdmin(admin.ModelAdmin):
     def thumbnail_image(self, obj):
         if obj.image:
             image_url = obj.image.url
-            absolute_url = '{}{}'.format(settings.MEDIA_URL, image_url)
-            return format_html('<img src="{}" width="50" height="50" />'.format(absolute_url))
+            return format_html('<img src="{}" width="50" height="50" />'.format(image_url))
         else:
             return 'No image'
 
