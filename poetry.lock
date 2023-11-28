@@ -118,6 +118,17 @@ doc = ["sphinx"]
 test = ["pytest", "pytest-cov"]
 
 [[package]]
+name = "thumbnail"
+version = "1.5"
+description = "Thumbnail/Preview generator for 450 different filetypes in python."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "thumbnail-1.5-py3-none-any.whl", hash = "sha256:744ba6e5974165f573296d593349857867fe47161021994c73d1e1264a4e155e"},
+    {file = "thumbnail-1.5.tar.gz", hash = "sha256:27ebc7a9955cd2df8061be64efc0b5b60526f26ae768c12481f3611ba03f7a03"},
+]
+
+[[package]]
 name = "tzdata"
 version = "2023.3"
 description = "Provider of IANA time zone data"
@@ -131,4 +142,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "667b6ce1ee0d5057de62c670eedf0ef503b531e80114dba378d565b865943d2b"
+content-hash = "21ec22015cade19f61d9d518ecd234fcb67ff3b43639dd30af19c3218f40030a"

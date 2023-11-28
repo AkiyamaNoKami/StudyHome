@@ -19,7 +19,7 @@ class Student(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField(max_length=100, blank=False)
     description = models.TextField()
-    img = models.ImageField(upload_to='images/', blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
     course = models.ManyToManyField('course.Course', through='StudentCourse', related_name='students_course')
 
     def __str__(self):
