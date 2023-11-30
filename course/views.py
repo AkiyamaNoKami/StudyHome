@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from models import Course
 
-# Create your views here.
+def index(requets):
+    course = Course.objects.all()
+    context = {'course':course}
+    return render(requets, 'school/base.html', context)

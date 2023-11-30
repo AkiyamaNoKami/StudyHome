@@ -19,8 +19,18 @@ class CourseAdmin(admin.ModelAdmin):
 
     readonly_fields = ['get_teachers', 'get_students']
 
+class MarkAdmin(admin.ModelAdmin):
+    list_display = ['lesson', 'student', 'score']
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'student':
+            lesson_id = request.resolver_match.kwargs.get('object_id')
+            if lesson_id:
+                kwargs['queryset'] = Mark.objects.filter(lesson_id=lesson_id).values('student')
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
 admin.site.register(Subject)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(CourseType)
 admin.site.register(Lesson)
-admin.site.register(Mark)
+admin.site.register(Mark, MarkAdmin)
