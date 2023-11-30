@@ -22,6 +22,7 @@ class Teacher(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='images/', blank=True)
     course = models.ManyToManyField('course.Course', through='TeacherCourse', related_name='teacher_course')
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.surname} {self.name} {self.last_name}"

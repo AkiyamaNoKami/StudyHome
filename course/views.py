@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from models import Course
+from .models import Course
 
 def index(requets):
     course = Course.objects.all()
