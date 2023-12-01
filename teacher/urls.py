@@ -5,6 +5,6 @@ from teacher.views import teacher_all
 app_name='team'
 
 urlpatterns = [
-    path('', views.teacher_all, name='team')
+    path('', teacher_all, name='teacher_all'),
 
 ]

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 def product_all(request):
     return render(request, 'school/index.html')
@@ -13,7 +13,7 @@ def courses(request):
     return render(request, 'school/courses.html')
 
 def team(request):
-    return render(request, 'school/team.html')
+    return redirect('teacher_all')
 
 def testimonial(request):
     return render(request, 'school/testimonial.html')
