@@ -1,8 +1,7 @@
 {% extends '../base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-
+{% block title %}Наша команда{% endblock %}
 <body>
 {% block header %}
     <!-- Header Start -->
@@ -10,12 +9,12 @@
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Our Team</h1>
+                    <h1 class="display-3 text-white animated slideInDown">Наша команда</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Team</li>
+                            <li class="breadcrumb-item"><a class="text-white" href="/static">Главная</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="{% url 'school:about' %}">О компании</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Наша команда</li>
                         </ol>
                     </nav>
                 </div>
@@ -26,12 +25,10 @@
 {% endblock %}
 {% block nav_home %}<a href="{% url 'school:school_home' %}" class="nav-item nav-link">Главная</a>{% endblock %}
 {% block nav_pages %}<a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">О компании</a>{% endblock %}
-{% block service %}{% endblock %}
-{% block about %}{% endblock %}
-{% block categories %}{% endblock %}
-{% block courses %}{% endblock %}
-{% block testimonial %}{% endblock %}
+{% block body %}
 
+    {% include 'team/teachers.html' %}
+{% endblock %}
 </body>
 
 </html>

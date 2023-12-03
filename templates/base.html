@@ -59,7 +59,7 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             {% block nav_home %}<a href="{% url 'school:school_home' %}" class="nav-item nav-link active">Главная</a>{% endblock %}
             {% block nav_about %}<a href="{% url 'school:about' %}" class="nav-item nav-link">О нас</a>{% endblock %}
-            {% block nav_course %}<a href="{% url 'school:courses' %}" class="nav-item nav-link">Курсы</a>{% endblock %}
+            {% block nav_course %}<a href="{% url 'courses:courses_all' %}" class="nav-item nav-link">Курсы</a>{% endblock %}
             <div class="nav-item dropdown">
                 {% block nav_pages %}<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">О компании</a>{% endblock %}
                 <div class="dropdown-menu fade-down m-0">

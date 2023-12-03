@@ -1,12 +1,9 @@
 {% extends '../base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-
+{% block title %}О нас{% endblock %}
 <body>
 {% block header %}
-
     <!-- Header Start -->
     <div class="container-fluid bg-primary py-5 mb-5 page-header">
         <div class="container py-5">
@@ -16,7 +13,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a class="text-white"
-                                                           href="{% url 'school:school_home' %}">Главная</a></li>
+                                                           href="/">Главная</a></li>
                             <li class="breadcrumb-item text-white active" aria-current="page">О нас</li>
                         </ol>
                     </nav>

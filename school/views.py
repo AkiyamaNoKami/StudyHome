@@ -10,10 +10,10 @@ def contact(request):
     return render(request, 'school/contact.html')
 
 def courses(request):
-    return render(request, 'school/courses.html')
+    return render(request, 'school/../templates/courses/courses.html')
 
 def team(request):
-    return redirect('teacher_all')
+    return redirect('team:teacher_all')
 
 def testimonial(request):
     return render(request, 'school/testimonial.html')
