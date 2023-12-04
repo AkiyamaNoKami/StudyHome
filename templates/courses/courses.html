@@ -4,6 +4,7 @@
 {% block title %}Наша команда{% endblock %}
 <body>
 {% block header %}
+    <link href="{% static 'css/card_style.css' %}" rel="stylesheet">
     <!-- Header Start -->
     <div class="container-fluid bg-primary py-5 mb-5 page-header">
         <div class="container py-5">
@@ -25,7 +26,100 @@
 {% block nav_home %}<a href="{% url 'school:school_home' %}" class="nav-item nav-link">Главная</a>{% endblock %}
 {% block nav_course %}<a href="{% url 'courses:courses_all' %}" class="nav-item nav-link active">Курсы</a>{% endblock %}
 {% block body %}
-
+<section class="light">
+	<div class="container py-2">
+		<div class="h1 text-center text-dark" id="pageHeaderTitle">Наши курсы</div>
+		<article class="postcard light blue">
+			<a class="postcard__img_link" href="#">
+				<img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" />
+			</a>
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title blue"><a href="#">Групповые занятия</a></h1>
+				<div class="postcard__subtitle small">
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">
+                    <p>Присоединяйтесь к нашей платформе онлайн-обучения и откройте для своих детей захватывающий мир групповых занятий.
+                    Уникальные курсы, вдохновляющие преподаватели и возможность общения с друзьями делают каждое занятие незабываемым.
+                    Дети развивают навыки, обмениваются опытом и находят вдохновение вместе.
+                    Прокачайте знания вашего ребенка с увлекательными групповыми занятиями уже сегодня!</p>
+                </div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item"><i class="fas fa-tag mr-2"></i> 10-20 учеников</li>
+					<li class="tag__item"><i class="fas fa-clock mr-2"></i> 100 минут</li>
+				</ul>
+			</div>
+		</article>
+		<article class="postcard light red">
+			<a class="postcard__img_link" href="#">
+				<img class="postcard__img" src="https://picsum.photos/501/500" alt="Image Title" />
+			</a>
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title red"><a href="#">Индивидуальные занятия</a></h1>
+				<div class="postcard__subtitle small">
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">
+                    <p>Откройте для своих детей мир индивидуального обучения на нашей платформе онлайн-образования.
+                    Наши опытные преподаватели разрабатывают персональные программы, учитывая уникальные потребности каждого ученика.
+                    Это индивидуальное внимание позволяет детям раскрыть свой полный потенциал, уверенно двигаться вперед и достигать новых высот в учебе.
+                    Проведите ребенка в мир знаний с индивидуальными занятиями на нашей платформе!</p>
+                </div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item"><i class="fas fa-tag mr-2"></i> 1 человек</li>
+					<li class="tag__item"><i class="fas fa-clock mr-2"></i> 90 минут</li>
+				</ul>
+			</div>
+		</article>
+		<article class="postcard light green">
+			<a class="postcard__img_link" href="#">
+				<img class="postcard__img" src="https://picsum.photos/500/501" alt="Image Title" />
+			</a>
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title green"><a href="#">Подготовка к ЕГЭ</a></h1>
+				<div class="postcard__subtitle small">
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">
+                    <p>Наши специализированные программы подготовки к ЕГЭ помогут вашему ребенку успешно справиться с экзаменационным стрессом
+                    и достичь выдающихся результатов. На платформе онлайн-образования, мы предлагаем интенсивные курсы, разработанные опытными педагогами,
+                    которые погружают учеников в тщательную подготовку к экзаменам.</p>
+                    <p>Наша методика включает в себя не только тщательное изучение предметов, но и стратегии успешного прохождения тестирования.
+                    Развивая навыки анализа, критического мышления и эффективного временного управления, мы гарантируем, что ваш ребенок будет готов к любым испытаниям ЕГЭ.
+                    Поможем ему открыть дверь в будущее с успешной подготовкой к экзаменам на нашей платформе!</p>
+                </div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item"><i class="fas fa-tag mr-2"></i> 1-10 человек</li>
+					<li class="tag__item"><i class="fas fa-clock mr-2"></i> 90 минут</li>
+				</ul>
+			</div>
+		</article>
+		<article class="postcard light yellow">
+			<a class="postcard__img_link" href="#">
+				<img class="postcard__img" src="https://picsum.photos/501/501" alt="Image Title" />
+			</a>
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title yellow"><a href="#">Подготовка к ОГЭ</a></h1>
+				<div class="postcard__subtitle small">
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">
+                    <p>Мы предлагаем специальные программы подготовки к ОГЭ, которые обеспечивают комплексный и эффективный подход к обучению.
+                    На платформе онлайн-образования, наши преподаватели, эксперты в своих областях, помогут вашему ребенку освоить все необходимые знания
+                    и умения для успешного сдачи ОГЭ.</p>
+                    <p>Наши курсы охватывают все предметы экзаменационной программы, предоставляя структурированный материал и практические навыки.
+                    Мы также сосредотачиваемся на развитии стратегий решения задач, аналитического мышления и уверенности в себе во время экзамена.</p>
+                    <p>Подготовка к ОГЭ на нашей платформе - это надежный путь к успешному сдаче экзаменов и достижению отличных результатов.
+                    Вместе мы готовим вашего ребенка к новым высотам знаний!</p>
+                </div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item"><i class="fas fa-tag mr-2"></i> 1-10 человек</li>
+					<li class="tag__item"><i class="fas fa-clock mr-2"></i> 90 минут</li>
+				</ul>
+			</div>
+		</article>
+	</div>
+</section>
 {% endblock %}
 </body>
 
