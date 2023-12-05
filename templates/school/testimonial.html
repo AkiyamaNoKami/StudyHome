@@ -1,5 +1,5 @@
 {% extends '../base.html' %}
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,13 +25,70 @@
     </div>
     <!-- Header End -->
 {% endblock %}
-{% block nav_home %}<a href="{% url 'school:school_home' %}" class="nav-item nav-link">Home</a>{% endblock %}
-{% block nav_pages %}<a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>{% endblock %}
-{% block service %}{% endblock %}
-{% block about %}{% endblock %}
-{% block categories %}{% endblock %}
-{% block courses %}{% endblock %}
-{% block team %}{% endblock %}
+{% block nav_home %}<a href="{% url 'school:school_home' %}" class="nav-item nav-link">Главная</a>{% endblock %}
+{% block nav_pages %}<a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">О компании</a>{% endblock %}
+{% block body %}
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Отзывы</h6>
+                <h1 class="mb-5">Наши клиенты говорят!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="{% static 'img/testimonial-1.jpg' %}"
+                         style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Анна</h5>
+                    <p>Групповые занятия</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Я в восторге от групповых занятий на вашей платформе онлайн-образования! Мой ребенок активно участвует в обсуждениях,
+                            обменивается идеями с одноклассниками и развивает коммуникативные навыки. Профессионализм преподавателей и организация занятий в группах создают
+                            атмосферу коллективного обучения и взаимопонимания. Увлекательные уроки и интерактивные задания делают процесс обучения увлекательным.
+                            Я вижу положительный вклад групповых занятий в общее развитие ребенка и благодарен за ваш подход к онлайн-образованию!</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="{% static 'img/testimonial-2.jpg' %}"
+                         style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Владимир</h5>
+                    <p>Подготовка к ЕГЭ</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Я глубоко признателен вашей платформе онлайн-образования за индивидуальные занятия по подготовке к ЕГЭ.
+                            Профессиональные преподаватели создают атмосферу поддержки и внимания к каждой детали, что делает процесс обучения максимально эффективным.
+                            Индивидуальные занятия позволяют адаптировать программу под конкретные потребности ребенка,
+                            что важно для успешной подготовки к экзамену. Я вижу заметные успехи моего ребенка и полностью доволен результатами.
+                            Спасибо за качественную работу и заботу о развитии моего ребенка!"</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="{% static 'img/testimonial-3.jpg' %}"
+                         style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Даниил</h5>
+                    <p>Индивидуальные занятия</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Мы в восторге от индивидуальных занятий на вашей платформе онлайн-образования!
+                            Наш ребенок получает максимальное внимание преподавателя, что позволяет ему развиваться в своем темпе и углубляться в интересующие темы.
+                            Профессионализм преподавателей и теплая атмосфера делают уроки увлекательными и продуктивными. Мы видим огромный прогресс в учебе и уверены,
+                            что индивидуальные занятия - идеальный способ раскрыть потенциал каждого ученика. Благодарим за качественное образование и заботу о наших детях!</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="{% static 'img/testimonial-4.jpg' %}"
+                         style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Мария</h5>
+                    <p>Подготовка к ОГЭ</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Мы выражаем благодарность вашей платформе онлайн-образования за эффективные групповые занятия по подготовке к ОГЭ.
+                            Профессиональные преподаватели создают дружелюбную и поддерживающую атмосферу, что важно для эффективного обучения.
+                            Групповые занятия не только улучшают знание предметов, но и развивают навыки сотрудничества и командной работы.
+                            Подход к подготовке к ОГЭ на вашей платформе вдохновляет уверенностью в успешном сдаче экзамена.
+                            Мы ценим индивидуальный подход к каждому ученику и качественную организацию процесса обучения в группах.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
 </body>
 
