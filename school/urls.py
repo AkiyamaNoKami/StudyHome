@@ -9,6 +9,7 @@ urlpatterns = [
     path('courses/', include('course.urls', namespace='courses')),
     path('team/', include('teacher.urls', namespace='team')),
     path('testimonial/', views.testimonial, name='testimonial'),
+    path('account/', include('account.urls', namespace='account')),
     path('', views.product_all, name='school_home'),
 
 ]
