@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Subject, Course, CourseType, Lesson, Mark, Homework
+from .models import Subject, Course, CourseType, Lesson, Mark, Homework, StudentHomework
 from teacher.admin import TeacherCourseInline
 from student.admin import StudentCourseInline
 class CourseAdmin(admin.ModelAdmin):
@@ -34,4 +34,5 @@ admin.site.register(Course, CourseAdmin)
 admin.site.register(CourseType)
 admin.site.register(Lesson)
 admin.site.register(Homework)
+admin.site.register(StudentHomework)
 admin.site.register(Mark, MarkAdmin)

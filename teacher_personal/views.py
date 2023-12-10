@@ -1,33 +1,43 @@
 from django.shortcuts import render, redirect
 from teacher.models import TeacherCourse
-from course.models import Lesson
+from django.shortcuts import get_object_or_404
+from course.models import Lesson, Homework, StudentHomework
 from account.models import Account
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='account:login')
 def teacher_personal_view(request):
     try:
-        # Пытаемся получить объект аккаунта пользователя
         account = request.user
-        print('account')
-        # Проверяем, является ли аккаунт учителем
         if account.teacher:
             teacher = account.teacher
             lessons = Lesson.objects.filter(teacher=teacher)
             context = {'lessons': lessons}
-            print(lessons)
-            print(context)
-            print("Teacher logged in successfully!")  # Добавьте эту строку
             return render(request, 'teacher_pm/teacher_lessons.html', context)
 
         else:
-            # Если не является учителем, перенаправляем на URL приложения account
+            return redirect('account:login')
+    except Account.DoesNotExist:
+        return redirect('account:login')
+
+
+#снести старую базу данных и создать новые записи чтобы проверить работоспособность уроков (их айди)
+@login_required(login_url='account:login')
+def teacher_homework_view(request, lesson_id):
+    try:
+        account = request.user
+        if account.teacher:
+            teacher = account.teacher
+            # lessons = Lesson.objects.filter(lesson_id__isnull=False)
+            lessons = get_object_or_404(Lesson, pk=lesson_id, teacher=teacher)
+            homeworks = StudentHomework.objects.filter(homework__lesson__teacher=teacher)
+            total_homework = Homework.objects.filter(lesson=lessons).first()
+            context = {'homeworks': homeworks, 'total_homework': total_homework, 'lessons': lessons}
+            print(context)
+            print("Teacher logged in successfully!")
+            return render(request, 'teacher_pm/teacher_homework.html', context)
+        else:
             return redirect('account:login')
 
     except Account.DoesNotExist:
-        # Если аккаунт не существует, перенаправляем на URL приложения account
-        return redirect('account:login')
-    except Exception as e:
-        # Логируйте ошибку, чтобы понять, что происходит
-        print(e)
         return redirect('account:login')

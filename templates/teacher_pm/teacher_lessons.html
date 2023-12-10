@@ -13,6 +13,9 @@
         <li class="list-group-item">Курс: {{ lesson.course }}</li>
         <li class="list-group-item">Дата и время начала: {{ lesson.date }}</li>
         <li class="list-group-item">Время: {{ lesson.duration }} мин.</li>
+{#          {% if lesson.id %}#}
+        <li class="list-group-item"><a href="{% url 'teacher_personal:teacher_homeworks' lesson_id=lesson.pk %}">Домашнее задание</a></li>
+{#          {% endif %}#}
       </ul>
       <div class="card-body">
           {% if lesson.video_link %}
