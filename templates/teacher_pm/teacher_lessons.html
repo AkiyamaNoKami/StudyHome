@@ -1,0 +1,27 @@
+{% extends 'teacher_pm/teacher_base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="d-grid flex-column justify-content-center">
+{% for lesson in lessons %}
+<div class="card text-center mx-auto mb-5 mt-4" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ lesson.title }}</h5>
+        <p class="card-text">{{ lesson.description }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Курс: {{ lesson.course }}</li>
+        <li class="list-group-item">Дата и время начала: {{ lesson.date }}</li>
+        <li class="list-group-item">Время: {{ lesson.duration }} мин.</li>
+      </ul>
+      <div class="card-body">
+          {% if lesson.video_link %}
+        <li class="list-group-item"><a href="{{ lesson.video_link }}">Ссылка на подключение</a></li>
+          {% else %}
+        <li class="list-group-item">Ссылка не доступна</li>
+          {% endif %}
+      </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

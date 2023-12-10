@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from course.models import Course
+from teacher.models import TeacherCourse
+from course.models import Lesson
 from account.models import Account
 from django.contrib.auth.decorators import login_required
 
@@ -12,9 +13,12 @@ def teacher_personal_view(request):
         # Проверяем, является ли аккаунт учителем
         if account.teacher:
             teacher = account.teacher
-            courses = Course.objects.all()
+            lessons = Lesson.objects.filter(teacher=teacher)
+            context = {'lessons': lessons}
+            print(lessons)
+            print(context)
             print("Teacher logged in successfully!")  # Добавьте эту строку
-            return render(request, 'teacher_pm/teacher_base.html', {'courses': courses, 'teacher': teacher})
+            return render(request, 'teacher_pm/teacher_lessons.html', context)
 
         else:
             # Если не является учителем, перенаправляем на URL приложения account
