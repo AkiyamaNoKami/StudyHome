@@ -28,17 +28,39 @@
         <p class="card-text">{{ homework.student.surname }} {{ homework.student.name }} {{ homework.student.last_name }}</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Ответ на 1 вопрос: <strong class="text-primary">{{ homework.answer_1 }}</strong></li>
+          {% if homework.answer_1 == total_homework.answer_1 %}
+            <li class="list-group-item">Ответ на 1 вопрос: <strong class="text-primary">{{ homework.answer_1 }}</strong></li>
+          {% else %}
+            <li class="list-group-item">Ответ на 1 вопрос: <strong class="text-danger">{{ homework.answer_1 }}</strong></li>
+          {% endif %}
+
+          {% if homework.answer_2 == total_homework.answer_2 %}
         <li class="list-group-item">Ответ на 2 вопрос: <strong class="text-primary">{{ homework.answer_2 }}</strong></li>
+          {% else %}
+        <li class="list-group-item">Ответ на 2 вопрос: <strong class="text-danger">{{ homework.answer_2 }}</strong></li>
+        {% endif %}
+
+          {% if homework.answer_3 == total_homework.answer_3 %}
         <li class="list-group-item">Ответ на 3 вопрос: <strong class="text-primary">{{ homework.answer_3 }}</strong></li>
+          {% else %}
+          <li class="list-group-item">Ответ на 3 вопрос: <strong class="text-danger">{{ homework.answer_3 }}</strong></li>
+          {% endif %}
+
+          {% if homework.answer_4 == total_homework.answer_4 %}
         <li class="list-group-item">Ответ на 4 вопрос: <strong class="text-primary">{{ homework.answer_4 }}</strong></li>
+          {% else %}
+        <li class="list-group-item">Ответ на 4 вопрос: <strong class="text-primary">{{ homework.answer_4 }}</strong></li>
+          {% endif %}
+
       </ul>
       <div class="card-body">
+          <li class="list-group-item">Оценка студента: <strong>{{ homework.total_grade }}</strong></li>
           <form method="post" action="{% url 'teacher_personal:update_grade' lesson_id=lesson.pk %}">
               {% csrf_token %}
+              {{ form.as_p }}
               <input type="hidden" name="homework_id" value="{{ homework.id }}">
-              <label for="grade_input">Выставить оценку:</label>
-              <input type="number" name="grade" id="grade_input" required>
+              <label for="id_grade">Выставить оценку:</label>
+              <input type="number" name="grade" id="id_grade" min="0" max="5" required>
               <button type="submit">Обновить оценку</button>
           </form>
       </div>

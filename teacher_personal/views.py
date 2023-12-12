@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from teacher.models import TeacherCourse
+from .forms import GradeForm
 from django.shortcuts import get_object_or_404
 from course.models import Lesson, Homework, StudentHomework
 from account.models import Account
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 @login_required(login_url='account:login')
 def teacher_personal_view(request):
@@ -50,14 +51,23 @@ def update_grade_view(request, lesson_id):
             lesson = Lesson.objects.get(pk=lesson_id, teacher=teacher)
 
             if request.method == 'POST':
-                homework_id = request.POST.get('homework_id')
-                grade = request.POST.get('grade')
+                form = GradeForm(request.POST)
+                if form.is_valid():
+                    homework_id = form.cleaned_data['homework_id']
+                    grade = form.cleaned_data['grade']
 
-                student_homework = get_object_or_404(StudentHomework, pk=homework_id)
-                student_homework.total_grade = grade
-                student_homework.save()
+                    # homework_id = request.POST.get('homework_id')
+                    # grade = request.POST.get('grade')
 
-                return redirect('teacher_personal:teacher_homeworks', lesson_id=lesson_id)
+                    student_homework = get_object_or_404(StudentHomework, pk=homework_id)
+                    student_homework.total_grade = grade
+                    student_homework.save()
+
+                    return redirect('teacher_personal:teacher_homeworks', lesson_id=lesson_id)
+                else:
+                    messages.error(request, 'Пожалуйста введите корректные значения, оценка должна быть от 0 до 5')
+            else:
+                form = GradeForm()
             return render(request, 'teacher_pm/teacher_homework.html', {'lesson': lesson})
     except Account.DoesNotExist:
         return redirect('account:login')
