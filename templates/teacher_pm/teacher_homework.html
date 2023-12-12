@@ -8,37 +8,39 @@
         <p class="card-text">{{ homework.student.name }}</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Курс: </li>
-        <li class="list-group-item">Дата и время начала: </li>
-        <li class="list-group-item">Время:  мин.</li>
-        <li class="list-group-item"><a href="">Домашнее задание</a></li>
+          <li class="list-group-item">Текст задания: {{ total_homework.task_1 }}<br>Правильный ответ: <strong class="text-primary">{{ total_homework.answer_1 }}</strong></li>
+          <li class="list-group-item">Текст задания: {{ total_homework.task_2 }}<br>Правильный ответ: <strong class="text-primary">{{ total_homework.answer_2 }}</strong></li>
+          <li class="list-group-item">Текст задания: {{ total_homework.task_3 }}<br>Правильный ответ: <strong class="text-primary">{{ total_homework.answer_3 }}</strong></li>
+          <li class="list-group-item">Текст задания: {{ total_homework.task_4 }}<br>Правильный ответ: <strong class="text-primary">{{ total_homework.answer_4 }}</strong></li>
       </ul>
-      <div class="card-body">
-          {% if lesson.video_link %}
-        <li class="list-group-item"><a href="">Ссылка на подключение</a></li>
-          {% else %}
-        <li class="list-group-item">Ссылка не доступна</li>
-          {% endif %}
-      </div>
+{#      <div class="card-body">#}
+{#          {% if lesson.video_link %}#}
+{#        <li class="list-group-item"><a href="">Ссылка на подключение</a></li>#}
+{#          {% else %}#}
+{#        <li class="list-group-item">Ссылка не доступна</li>#}
+{#          {% endif %}#}
+{#      </div>#}
 </div>
 {% for homework in homeworks %}
 <div class="card text-center mx-auto mb-5 mt-4" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">{{ homework.homework.lesson.title }}</h5>
-        <p class="card-text">{{ homework.student.name }}</p>
+        <h5 class="card-title">Выполнено студентом:</h5>
+        <p class="card-text">{{ homework.student.surname }} {{ homework.student.name }} {{ homework.student.last_name }}</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Курс: </li>
-        <li class="list-group-item">Дата и время начала: </li>
-        <li class="list-group-item">Время:  мин.</li>
-        <li class="list-group-item"><a href="">Домашнее задание</a></li>
+        <li class="list-group-item">Ответ на 1 вопрос: <strong class="text-primary">{{ homework.answer_1 }}</strong></li>
+        <li class="list-group-item">Ответ на 2 вопрос: <strong class="text-primary">{{ homework.answer_2 }}</strong></li>
+        <li class="list-group-item">Ответ на 3 вопрос: <strong class="text-primary">{{ homework.answer_3 }}</strong></li>
+        <li class="list-group-item">Ответ на 4 вопрос: <strong class="text-primary">{{ homework.answer_4 }}</strong></li>
       </ul>
       <div class="card-body">
-          {% if lesson.video_link %}
-        <li class="list-group-item"><a href="">Ссылка на подключение</a></li>
-          {% else %}
-        <li class="list-group-item">Ссылка не доступна</li>
-          {% endif %}
+          <form method="post" action="{% url 'teacher_personal:update_grade' lesson_id=lesson.pk %}">
+              {% csrf_token %}
+              <input type="hidden" name="homework_id" value="{{ homework.id }}">
+              <label for="grade_input">Выставить оценку:</label>
+              <input type="number" name="grade" id="grade_input" required>
+              <button type="submit">Обновить оценку</button>
+          </form>
       </div>
 </div>
 {% endfor %}
