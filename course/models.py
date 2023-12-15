@@ -94,6 +94,7 @@ class StudentHomework(models.Model):
     answer_3 = models.CharField(max_length=255)
     answer_4 = models.CharField(max_length=255)
     total_grade = models.IntegerField(null=True, blank=True)
+    watch_lesson = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Homework for {self.student.name} on {self.homework.lesson.title}'

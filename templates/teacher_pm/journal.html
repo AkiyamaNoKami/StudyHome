@@ -1,0 +1,47 @@
+{% extends 'teacher_pm/teacher_base.html' %}
+
+{% block body %}
+
+<div class="container mt-3">
+  <h2>Классный журнал</h2>
+{% for crs in teacher_courses %}
+    <h3>{{ crs }}</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ФИО ученика</th>
+          {% for lesson in lessons %}
+        <th>Посещение занятия: {{ lesson.title }}</th>
+        <th>Выполнение ДЗ к {{ lesson.title }}</th>
+          {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for student, data in student_homeworks.items %}
+      <tr>
+        <td>{{ student.name }} {{ student.surname }} {{ student.last_name }}</td>
+        {% for value in data.attendance %}
+            {% if value == 1 %}
+                <td>Посетил</td>
+            {% else %}
+                <td>Не посетил</td>
+            {% endif %}
+        {% endfor %}
+        {% for value in data.homework %}
+            {% if value == 1 %}
+                <td>Выполнил </td>
+            {% else %}
+                <td>Не выполнил </td>
+            {% endif %}
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endfor %}
+</div>
+
+</body>
+
+{% endblock %}

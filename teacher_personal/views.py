@@ -66,6 +66,7 @@ def update_grade_view(request, lesson_id):
             lesson = Lesson.objects.get(pk=lesson_id, teacher=teacher)
             students = Student.objects.all()
 
+
             if request.method == 'POST':
                 form = GradeForm(request.POST)
                 if form.is_valid():
@@ -88,5 +89,48 @@ def update_grade_view(request, lesson_id):
             }
 
             return render(request, 'teacher_pm/teacher_homework.html', context)
+    except Account.DoesNotExist:
+        return redirect('account:login')
+
+
+# def journal_view(request):
+#     return render(request, 'teacher_pm/journal.html')
+
+@login_required(login_url='account:login')
+def journal_view(request):
+    try:
+        account = request.user
+        if account.teacher:
+            teacher = account.teacher
+            student_homeworks = {}
+            teacher_courses = Course.objects.filter(teacher=teacher)
+            lessons = Lesson.objects.filter(teacher=teacher, course__in=teacher_courses)
+
+            for lesson in lessons:
+                homeworks = StudentHomework.objects.filter(homework__lesson=lesson)
+                activity = StudentHomework.objects.all()
+                course = lesson.course
+                students = Student.objects.filter(course=course)
+                student_active = {}
+                for student in students:
+                    student_hw = 1 if homeworks.filter(student=student) else 0
+                    student_act = 1 if activity.filter(student=student, watch_lesson=True).exists() else 0
+                    if student not in student_homeworks:
+                        student_homeworks[student] = {'attendance': [], 'homework': []}
+                    student_homeworks[student]['attendance'].append(student_act)
+                    student_homeworks[student]['homework'].append(student_hw)
+
+            print(course)
+
+            context = {
+                'lessons': lessons,
+                'students': students,
+                'homeworks': homeworks,
+                'student_homeworks': student_homeworks,
+                'student_active': student_active,
+                'teacher_courses':teacher_courses,
+            }
+
+            return render(request, 'teacher_pm/journal.html', context)
     except Account.DoesNotExist:
         return redirect('account:login')
