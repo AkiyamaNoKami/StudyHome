@@ -2,26 +2,32 @@
 
 {% block body %}
     <div class="container mt-3">
-  <h2>Ученики</h2>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>ФИО ученика</th>
-        <th>Курс</th>
-      </tr>
-    </thead>
-    <tbody>
+        <h2>Ученики</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ФИО ученика</th>
+                <th>Курс</th>
+                <th>Контакты ученика</th>
+                <th>Контакты родителей</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for course, student in courses_lessons.items %}
+                {% for st in student %}
+                    <tr>
+                    <td>{{ st }}</td>
+                    <td class="text-primary">{{ course }}</td>
+                    <td class="text-primary">Телефон: {{ st.phone }}/ email: {{ st.email }}</td>
+                    <td class="text-primary">Телефон: {{ st.parents_phone }}/ email: {{ st.parents_email }}</td>
+                {% endfor %}
+            {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-
-      <tr>
-        <td>ФИО УЧЕНИКА</td>
-        <td class="text-primary">Название курса</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</body>
+    </body>
 
 
 {% endblock %}

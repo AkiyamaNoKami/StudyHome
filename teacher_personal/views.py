@@ -147,7 +147,21 @@ def teacher_students_view(request):
         account = request.user
         if account.teacher:
             teacher = account.teacher
+            student_homeworks = {}
+            teacher_courses = Course.objects.filter(teacher=teacher)
+            lessons = Lesson.objects.filter(teacher=teacher, course__in=teacher_courses)
+            courses_lessons = {}
 
-        return render(request, 'teacher_pm/teacher_students.html')
+
+            for course in teacher_courses:
+                students = Student.objects.filter(course=course)
+                # course_lessons = Lesson.objects.filter(course=course)
+                courses_lessons[course] = students
+
+            context = {
+                'courses_lessons': courses_lessons,
+            }
+
+            return render(request, 'teacher_pm/teacher_students.html', context)
     except Account.DoesNotExist:
         return redirect('account:login')
