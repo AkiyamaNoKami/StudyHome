@@ -60,7 +60,7 @@
             {% block nav_home %}<a href="{% url 'teacher_personal:teacher_personal' %}" class="nav-item nav-link active">Расписание</a>{% endblock %}
             {% block nav_about %}<a href="{% url 'teacher_personal:teacher_journal' %}" class="nav-item nav-link">Журнал</a>{% endblock %}
             {% block nav_zp %}<a href="" class="nav-item nav-link">Зарплата</a>{% endblock %}
-            {% block nav_rasp %}<a href="" class="nav-item nav-link">Расписание</a>{% endblock %}
+            {% block nav_rasp %}<a href="{% url 'teacher_personal:teacher_students' %}" class="nav-item nav-link">Ученики</a>{% endblock %}
             {% block nav_course %}<a href="" class="nav-item nav-link">Группы</a>{% endblock %}
         </div>
     </div>

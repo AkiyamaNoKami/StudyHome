@@ -105,6 +105,11 @@ def journal_view(request):
             student_homeworks = {}
             teacher_courses = Course.objects.filter(teacher=teacher)
             lessons = Lesson.objects.filter(teacher=teacher, course__in=teacher_courses)
+            courses_lessons = {}
+
+            for course in teacher_courses:
+                course_lessons = Lesson.objects.filter(course=course)
+                courses_lessons[course] = course_lessons
 
             for lesson in lessons:
                 homeworks = StudentHomework.objects.filter(homework__lesson=lesson)
@@ -120,7 +125,7 @@ def journal_view(request):
                     student_homeworks[student]['attendance'].append(student_act)
                     student_homeworks[student]['homework'].append(student_hw)
 
-            print(course)
+            print(courses_lessons)
 
             context = {
                 'lessons': lessons,
@@ -129,8 +134,20 @@ def journal_view(request):
                 'student_homeworks': student_homeworks,
                 'student_active': student_active,
                 'teacher_courses':teacher_courses,
+                'courses_lessons': courses_lessons,
             }
 
             return render(request, 'teacher_pm/journal.html', context)
+    except Account.DoesNotExist:
+        return redirect('account:login')
+
+@login_required(login_url='account:login')
+def teacher_students_view(request):
+    try:
+        account = request.user
+        if account.teacher:
+            teacher = account.teacher
+
+        return render(request, 'teacher_pm/teacher_students.html')
     except Account.DoesNotExist:
         return redirect('account:login')
