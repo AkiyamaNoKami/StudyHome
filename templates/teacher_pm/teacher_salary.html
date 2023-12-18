@@ -1,0 +1,128 @@
+{% extends 'teacher_pm/teacher_base.html' %}
+
+{% block body %}
+    <div class="d-grid flex-column justify-content-center">
+        <div class="card text-center mx-auto mb-5 mt-4" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Калькулятор зарплаты</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Выберите курсы, которые вы ведете:
+                    <div class="form-check">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="course1" id="course1">
+                        <label class="form-check-label" for="course1">
+                            Индивидуальные занятия
+                        </label>
+                        <input type="number" class="form-control lesson-count" id="lessonCount-course1" placeholder="Количество занятий" disabled>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="course2" id="course2">
+                        <label class="form-check-label" for="course2">
+                            Групповые занятия
+                        </label>
+                        <input type="number" class="form-control lesson-count" id="lessonCount-course2" placeholder="Количество занятий" disabled>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="course3" id="course3">
+                        <label class="form-check-label" for="course3">
+                            Подготовка к ОГЭ
+                        </label>
+                        <input type="number" class="form-control lesson-count" id="lessonCount-course3" placeholder="Количество занятий" disabled>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="course4" id="course4">
+                        <label class="form-check-label" for="course4">
+                            Подготовка к ЕГЭ
+                        </label>
+                        <input type="number" class="form-control lesson-count" id="lessonCount-course4" placeholder="Количество занятий" disabled>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    Выберите тип вашего оформления:
+                    <div class="form-check">
+                        <input class="form-check-input type-checkbox" type="checkbox" value="selfEmployed" id="selfEmployed">
+                        <label class="form-check-label" for="selfEmployed">
+                            Самозанятость
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input type-checkbox" type="checkbox" value="official" id="official">
+                        <label class="form-check-label" for="official">
+                            Официальное ТК РФ
+                        </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    Ваша итоговая сумма: <span id="totalAmount">0</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const courseCheckboxes = document.querySelectorAll('.course-checkbox');
+        const lessonCountInputs = document.querySelectorAll('.lesson-count');
+        const typeCheckboxes = document.querySelectorAll('.type-checkbox');
+        const totalAmountSpan = document.getElementById('totalAmount');
+
+        courseCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                const lessonCountInput = document.getElementById('lessonCount-' + checkbox.value);
+                lessonCountInput.disabled = !checkbox.checked;
+                lessonCountInput.value = checkbox.checked ? lessonCountInput.value : '';
+                updateTotalAmount();
+            });
+        });
+
+        lessonCountInputs.forEach(input => {
+            input.addEventListener('input', updateTotalAmount);
+        });
+
+        typeCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateTotalAmount);
+        });
+
+        function updateTotalAmount() {
+            let totalAmount = 0;
+
+            courseCheckboxes.forEach((checkbox, index) => {
+                if (checkbox.checked) {
+                    const lessonCountInput = document.getElementById('lessonCount-' + checkbox.value);
+                    const lessonCount = lessonCountInput.value || 0;
+                    totalAmount += calculateAmountForCheckbox(checkbox.value) * lessonCount;
+                }
+            });
+
+            typeCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalAmount *= calculateAmountForTypeCheckbox(checkbox.value);
+                }
+            });
+
+            totalAmountSpan.innerText = totalAmount.toFixed(2);
+        }
+
+        function calculateAmountForCheckbox(checkboxValue) {
+            switch (checkboxValue) {
+                case 'course1':
+                    return 1500;
+                case 'course2':
+                    return 2000;
+                case 'course3':
+                case 'course4':
+                    return 2300;
+            }}
+
+        function calculateAmountForTypeCheckbox(checkboxValue) {
+            switch (checkboxValue) {
+                case 'selfEmployed':
+                    return 1 - 0.06;
+                case 'official':
+                    return 1 - 0.13;
+                default:
+                    return 1;
+            }
+        }
+    </script>
+{% endblock %}
