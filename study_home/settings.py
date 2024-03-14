@@ -35,7 +35,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'StudyHome.urls'
+ROOT_URLCONF = 'study_home.urls'
 
 TEMPLATES = [
     {
@@ -54,7 +54,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'StudyHome.wsgi.application'
+WSGI_APPLICATION = 'study_home.wsgi.application'
 
 DATABASES = {
     'default': {

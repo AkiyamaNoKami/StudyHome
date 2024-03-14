@@ -1,0 +1,3 @@
+username: aki
+email: aki@gmail.com
+pas: admin
