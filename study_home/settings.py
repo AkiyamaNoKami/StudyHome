@@ -1,14 +1,10 @@
 import os
 from pathlib import Path
+import dynaconf
 
 
+PROJECT_ROOT = Path(__file__).resolve().parent
 BASE_DIR = Path(__file__).resolve().parent.parent
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+f&z^2spd%a$1lriqk(3$n#5md_s54sb(bi7-0g1#tma9jxa$o'
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -108,3 +104,8 @@ AUTH_USER_MODEL = 'account.Account'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+dynaconf.DjangoDynaconf(
+    __name__,
+    preload=[PROJECT_ROOT / 'settings.yaml',],
+)
