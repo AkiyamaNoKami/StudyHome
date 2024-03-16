@@ -12,3 +12,6 @@ media
 
 #Webpack
 /web_pack/node_modules/
+
+#db
+db.sqlite3
