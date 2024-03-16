@@ -2,9 +2,15 @@ import os
 from pathlib import Path
 import dynaconf
 
-
+#Root cnfg
 PROJECT_ROOT = Path(__file__).resolve().parent
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = Path(__file__).resolve().parent.parent / 'media'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -87,17 +93,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'account.Account'
 
