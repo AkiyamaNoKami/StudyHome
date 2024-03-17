@@ -4,14 +4,17 @@ from django.contrib.admin.widgets import FilteredSelectMultiple
 from .models import Student, StudentCourse
 from django.utils.html import format_html
 
+
 class StudentCourseInline(admin.TabularInline):
     model = StudentCourse
     extra = 1
 
+
+@admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     list_display = ['surname', 'name', 'last_name', 'age', 'gender', 'parents_phone', 'parents_email', 'phone', 'email', 'description', 'thumbnail_image']
     inlines = [StudentCourseInline]
-    filter_vertical = ['course']
+    filter_vertical = ['courses']
     formfield_overrides = {
         models.ManyToManyField: {'widget': FilteredSelectMultiple('Courses', is_stacked=False)},
     }
@@ -25,9 +28,7 @@ class StudentAdmin(admin.ModelAdmin):
     thumbnail_image.short_description = 'Thumbnail'
     thumbnail_image.allow_tags = True
 
+
 @admin.register(StudentCourse)
 class StudentCourseAdmin(admin.ModelAdmin):
     list_display = ['student', 'course']
-
-
-admin.site.register(Student, StudentAdmin)

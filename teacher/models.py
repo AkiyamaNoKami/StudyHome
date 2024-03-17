@@ -19,7 +19,7 @@ class Teacher(models.Model):
     email = models.EmailField(max_length=100, blank=False)
     description = models.TextField()
     image = models.ImageField(upload_to='teachers/', blank=True)
-    course = models.ManyToManyField('course.Course', through='TeacherCourse', related_name='teacher_course')
+    courses = models.ManyToManyField('course.Course', through='TeacherCourse', related_name='teacher_course')
     is_active = models.BooleanField(default=True)
 
     def __str__(self):

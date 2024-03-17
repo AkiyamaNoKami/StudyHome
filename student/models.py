@@ -16,7 +16,7 @@ class Student(models.Model):
     email = models.EmailField(max_length=100, blank=False)
     description = models.TextField()
     image = models.ImageField(upload_to='images/', blank=True)
-    course = models.ManyToManyField('course.Course', through='StudentCourse', related_name='students_course')
+    courses = models.ManyToManyField('course.Course', through='StudentCourse', related_name='students_course')
 
     def __str__(self):
         return f"{self.surname} {self.name} {self.last_name}"
