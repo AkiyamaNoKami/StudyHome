@@ -3,17 +3,14 @@ from course.models import Subject
 
 
 class Teacher(models.Model):
-
-    GENDER_CHOICES = [
-        ('М', 'Мужской'),
-        ('Ж', 'Женский'),
-    ]
-
+    class Gender(models.TextChoices):
+        male = 'М', 'Мужской'
+        female = 'Ж', 'Женский'
     name = models.CharField(max_length=30, blank=False)
     surname = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)
     age = models.IntegerField()
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=1, choices=Gender.choices)
     subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, blank=True)
     job = models.CharField(max_length=30)
     education = models.CharField(max_length=100)
