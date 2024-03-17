@@ -2,18 +2,14 @@ from django.db import models
 
 
 class Student(models.Model):
-
-    GENDER_CHOICES = [
-        ('М', 'Мужской'),
-        ('Ж', 'Женский'),
-    ]
-
-    student_id = models.AutoField(primary_key=True)
+    class Gender(models.TextChoices):
+        male = 'М', 'Мужской'
+        female = 'Ж', 'Женский'
     name = models.CharField(max_length=30, blank=False)
     surname = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)
     age = models.IntegerField()
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=1, choices=Gender.choices)
     parents_phone = models.CharField(max_length=100)
     parents_email = models.EmailField(max_length=100, blank=False)
     phone = models.CharField(max_length=20)
@@ -27,6 +23,7 @@ class Student(models.Model):
 
     class Meta:
         ordering = ['surname', 'name', 'last_name']
+
 
 class StudentCourse(models.Model):
     student = models.ForeignKey('Student', blank=True, null=True, on_delete=models.CASCADE)

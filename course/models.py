@@ -2,9 +2,7 @@ from django.db import models
 from student.models import Student
 
 
-
 class Subject(models.Model):
-    subject_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=30)
 
     def __str__(self):
@@ -41,10 +39,8 @@ class Course(models.Model):
         ordering = ['title']
 
 
-
 #Добавить описание, чтобы к каждому уроку была информация, также реализовать домашку
 class Lesson(models.Model):
-    lesson_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50)
     description = models.TextField(blank=True)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True)
@@ -58,6 +54,7 @@ class Lesson(models.Model):
 
     class Meta:
         ordering = ['title']
+
 
 class Mark(models.Model):
     score = models.IntegerField()

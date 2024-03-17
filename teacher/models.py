@@ -1,6 +1,7 @@
 from django.db import models
 from course.models import Subject
 
+
 class Teacher(models.Model):
 
     GENDER_CHOICES = [
