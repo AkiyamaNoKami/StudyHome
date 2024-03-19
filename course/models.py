@@ -8,18 +8,12 @@ class Subject(models.Model):
     def __str__(self):
         return self.title
 
-    class Meta:
-        ordering = ['title']
-
 
 class CourseType(models.Model):
     type = models.CharField(max_length=50)
 
     def __str__(self):
         return self.type
-
-    class Meta:
-        ordering = ['type']
 
 
 class Course(models.Model):
@@ -35,9 +29,6 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-    class Meta:
-        ordering = ['title']
-
 
 #Добавить описание, чтобы к каждому уроку была информация, также реализовать домашку
 class Lesson(models.Model):
@@ -52,9 +43,6 @@ class Lesson(models.Model):
     def __str__(self):
         return self.title
 
-    class Meta:
-        ordering = ['title']
-
 
 class Mark(models.Model):
     score = models.IntegerField()
@@ -63,9 +51,6 @@ class Mark(models.Model):
 
     def __str__(self):
         return str(self.score)
-
-    class Meta:
-        ordering = ['score']
 
 
 class Homework(models.Model):
@@ -95,4 +80,3 @@ class StudentHomework(models.Model):
 
     def __str__(self):
         return f'Homework for {self.student.name} on {self.homework.lesson.title}'
-
