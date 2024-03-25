@@ -24,7 +24,7 @@ class Course(models.Model):
     cost = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
     students = models.ManyToManyField('student.Student', blank=True, related_name='courses_students', through='student.StudentCourse')
-    teacher = models.ManyToManyField('teacher.Teacher', blank=True, related_name='course_teachers', through='teacher.TeacherCourse')
+    teachers = models.ManyToManyField('teacher.Teacher', blank=True, related_name='course_teachers', through='teacher.TeacherCourse')
 
     def __str__(self):
         return self.title
