@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./study_home
+    container_name: webapp
+    command: py manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./study_home:/study_home
+    ports:
+      - "8000:8000"
+    env_file:
+      - .secrets.yaml
