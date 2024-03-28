@@ -1,6 +1,7 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
 from .models import Account
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -13,12 +14,13 @@ def login_view(request):
             return redirect('teacher_personal:teacher_personal')
         else:
             print('none')
-            return render(request, 'account/login.html', {'error': 'Invalid user'})
+            return render(
+                request,
+                'account/login.html',
+                {'error': 'Invalid user'}
+            )
     print('done')
     return render(request, 'account/login.html')
-
-#Сделать при неверном вводе надпись что неверно введен логин\пароль и добавить в html кнопку выхода, также проверить обработку пользователя если он не учитель
-#Сделать чтобы несуществующий аккаунт выводил сообщение об этом, а не страницу DoesNotExist
 
 
 def registration(request):

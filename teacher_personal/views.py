@@ -6,6 +6,7 @@ from account.models import Account
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+
 @login_required(login_url='account:login')
 def teacher_personal_view(request):
     try:
@@ -22,7 +23,6 @@ def teacher_personal_view(request):
         return redirect('account:login')
 
 
-#снести старую базу данных и создать новые записи чтобы проверить работоспособность уроков (их айди)
 @login_required(login_url='account:login')
 def teacher_homework_view(request, lesson_id):
     try:
@@ -49,13 +49,16 @@ def teacher_homework_view(request, lesson_id):
                 lesson = lessons.first()
                 homeworks = StudentHomework.objects.filter(homework__lesson=lesson)
                 total_homework = Homework.objects.filter(lesson=lesson).first()
-                context = {'homeworks': homeworks, 'total_homework': total_homework, 'lesson': lesson, 'student_homeworks': student_homeworks, 'students_in_lesson': students_in_lesson, 'student_without_homework': student_without_homework}
+                context = {'homeworks': homeworks, 'total_homework': total_homework, 'lesson': lesson,
+                           'student_homeworks': student_homeworks, 'students_in_lesson': students_in_lesson,
+                           'student_without_homework': student_without_homework}
                 return render(request, 'teacher_pm/teacher_homework.html', context)
         else:
             return redirect('account:login')
 
     except Account.DoesNotExist:
         return redirect('account:login')
+
 
 @login_required(login_url='account:login')
 def update_grade_view(request, lesson_id):
@@ -65,7 +68,6 @@ def update_grade_view(request, lesson_id):
             teacher = account.teacher
             lesson = Lesson.objects.get(pk=lesson_id, teacher=teacher)
             students = Student.objects.all()
-
 
             if request.method == 'POST':
                 form = GradeForm(request.POST)
@@ -83,18 +85,13 @@ def update_grade_view(request, lesson_id):
             context = {
                 'lesson': lesson,
                 'students': students,
-                # 'homeworks': homeworks,
                 'form': form,
-                # 'student_homeworks': student_homeworks,
             }
 
             return render(request, 'teacher_pm/teacher_homework.html', context)
     except Account.DoesNotExist:
         return redirect('account:login')
 
-
-# def journal_view(request):
-#     return render(request, 'teacher_pm/journal.html')
 
 @login_required(login_url='account:login')
 def journal_view(request):
@@ -133,7 +130,7 @@ def journal_view(request):
                 'homeworks': homeworks,
                 'student_homeworks': student_homeworks,
                 'student_active': student_active,
-                'teacher_courses':teacher_courses,
+                'teacher_courses': teacher_courses,
                 'courses_lessons': courses_lessons,
             }
 
@@ -141,21 +138,18 @@ def journal_view(request):
     except Account.DoesNotExist:
         return redirect('account:login')
 
+
 @login_required(login_url='account:login')
 def teacher_students_view(request):
     try:
         account = request.user
         if account.teacher:
             teacher = account.teacher
-            student_homeworks = {}
             teacher_courses = Course.objects.filter(teacher=teacher)
-            lessons = Lesson.objects.filter(teacher=teacher, course__in=teacher_courses)
             courses_lessons = {}
-
 
             for course in teacher_courses:
                 students = Student.objects.filter(course=course)
-                # course_lessons = Lesson.objects.filter(course=course)
                 courses_lessons[course] = students
 
             context = {
@@ -173,15 +167,11 @@ def teacher_salary_view(request):
         account = request.user
         if account.teacher:
             teacher = account.teacher
-            student_homeworks = {}
             teacher_courses = Course.objects.filter(teacher=teacher)
-            lessons = Lesson.objects.filter(teacher=teacher, course__in=teacher_courses)
             courses_lessons = {}
-
 
             for course in teacher_courses:
                 students = Student.objects.filter(course=course)
-                # course_lessons = Lesson.objects.filter(course=course)
                 courses_lessons[course] = students
 
             context = {

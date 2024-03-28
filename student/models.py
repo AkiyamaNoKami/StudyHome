@@ -5,6 +5,7 @@ class Student(models.Model):
     class Gender(models.TextChoices):
         male = 'М', 'Мужской'
         female = 'Ж', 'Женский'
+
     name = models.CharField(max_length=30, blank=False)
     surname = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)

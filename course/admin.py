@@ -4,6 +4,7 @@ from .models import Subject, Course, CourseType, Lesson, Mark, Homework, Student
 from teacher.admin import TeacherCourseInline
 from student.admin import StudentCourseInline
 
+
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = ['title', 'type', 'subject', 'duration', 'cost', 'description']
@@ -54,4 +55,5 @@ class HomeworkAdmin(admin.ModelAdmin):
 
 @admin.register(StudentHomework)
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ['student', 'homework', 'answer_1', 'answer_2', 'answer_3', 'answer_4', 'total_grade', 'watch_lesson']
+    list_display = ['student', 'homework', 'answer_1', 'answer_2', 'answer_3', 'answer_4', 'total_grade',
+                    'watch_lesson']

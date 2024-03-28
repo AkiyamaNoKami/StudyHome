@@ -12,7 +12,8 @@ class TeacherCourseInline(admin.TabularInline):
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ['surname', 'name', 'last_name', 'age', 'gender', 'subject', 'job', 'education', 'experience', 'phone', 'description', 'thumbnail_image']
+    list_display = ['surname', 'name', 'last_name', 'age', 'gender', 'subject', 'job', 'education', 'experience',
+                    'phone', 'description', 'thumbnail_image']
     inlines = [TeacherCourseInline]
     filter_vertical = ['courses']
     formfield_overrides = {
